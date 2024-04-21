@@ -4,13 +4,34 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>weather forecast</title>
-		<link href="{{ url_for('static', filename='dist/css/output.css') }}" rel="stylesheet">
+		<title>Weather Forecast</title>
+		<link href="{{ url_for('static', filename='dist/css/output.css') }}" rel="stylesheet" />
 	</head>
-	<body>
+	<body style="background-color: #ffc0cb">
 		<div class="container mx-auto">
-        <h1 class="text-4xl font-bold text-center mt-8">Weather Forecast</h1>
-        <p class="text-lg text-center mt-4">To seach, enter a city.</p>
-    </div>
+			<h1 class="text-4xl font-bold text-center mt-8">Weather Forecast</h1>
+			<p class="text-lg text-center mt-4">To search, enter a city.</p>
+			<div>
+				<form action="/" method="POST">
+					<label for="city">Enter City:</label>
+					<input type="text" id="city" name="city" required />
+					<button style="background-color: #87ceeb; padding: 5px 10px; border: none; cursor: pointer" type="submit">
+						Get Weather
+					</button>
+				</form>
+			</div>
+
+			{% with messages = get_flashed_messages() %} {% if messages %} {% for msg in messages %} {{ msg }} {% endfor %} {%
+			endif %} {% endwith %} {% if weather %} {% if city %}
+
+			<p>Weather in {{ city }}:</p>
+			<p>Icon: {{ weather.icon }}</p>
+			<p>Humidity: {{ weather.humidity }}</p>
+			<p>Description: {{ weather.description }}</p>
+			<p>Wind: {{ weather.wind }}</p>
+			{% else %}
+			<p>No weather data available for {{ city }}</p>
+			{% endif %} {% endif %}
+		</div>
 	</body>
 </html>
