@@ -6,6 +6,7 @@ from os import path
 if path.exists('env.py'):
     import env
 
+
 class WeatherApp:
     def __init__(self):
         self.app = Flask(__name__)
@@ -14,19 +15,21 @@ class WeatherApp:
         self.app.route('/', methods=['GET','POST'])(self.home)
 
 
+
     def get_weather(self, city):
-        url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={self.api_key}'
+        url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={self.api_key}&units=metric'
         response = requests.get(url)
 
         if response.status_code == 200:
             data = response.json()
             pprint.pprint(data)
             weather = {
-                "main": data['weather'][0]['main'],
+                "temperature": data['main']['temp'],
                 "icon": data['weather'][0]['icon'],
                 "description": data['weather'][0]['description'],
                 'humidity': data['main']['humidity'],
-                'wind': data['wind']['speed']
+                'wind': data['wind']['speed'],
+                'country': data['sys']['country']
             }
             return render_template('home.html', weather=weather, city=city)
         elif response.status_code == 404:
@@ -47,6 +50,7 @@ class WeatherApp:
 
     def run(self):
         self.app.run(debug=True)
+        self.app.config['SEND_FILE_MAX_AGE_DEFAULT'] = -1
 
 if __name__ == '__main__':
     weather_app = WeatherApp()
