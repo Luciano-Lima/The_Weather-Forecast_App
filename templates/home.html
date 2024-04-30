@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" class="text-gray-400">
+<html lang="en" class="text-sky-950/75 capitalize">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Weather Forecast</title>
+		<title>weather forecast</title>
 		<link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}" />
 	</head>
-	<body class="flex justify-center items-center h-screen font-mono">
-		<div class="container mx-auto w-full text-center">
-			<h1 class="text-4xl font-bold text-center mt-8 text-greey-300">Weather Forecast</h1>
-			<div class="inline-block m-8">
+	<body
+		class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-screen"
+		style="background-image: url('../static/img/bg.jpeg')">
+		<div class="container mx-auto w-full text-center opacity-75">
+			<h1 class="text-4xl font-bold text-center mt-8 text-greey-300">weather forecast</h1>
+			<div class="inline-block m-8 opacity-75">
 				<form action="/" method="POST">
 					<label class="relative block">
 						<span class="sr-only">Search</span>
@@ -30,13 +32,36 @@
 
 			{% with messages = get_flashed_messages() %} {% if messages %} {% for msg in messages %} {{ msg }} {% endfor %} {%
 			endif %} {% endwith %} {% if weather %} {% if city %}
-			<div class="mt-8"></div>
-			<p class="font-semibold text-2xl">{{ city }}: {{ weather.country }}</p>
-			<img src="https://openweathermap.org/img/wn/{{weather.icon}}@2x.png" alt="weather icon" />
-			<p class="text-lg font-semibold">{{ weather.temperature }}°C</p>
-			<p>Humidity: {{ weather.humidity }}%</p>
-			<p>Description: {{ weather.description }}</p>
-			<p>Wind: {{ weather.wind }}mph</p>
+			<div
+				class="grid grid-cols-2 grid-rows-3 gap-y-3 justify-items-center mx-auto items-center rounded-lg bg-orange-50/20">
+				<div>
+					<span class="font-semibold text-2xl justify-items-end">{{ city }}, {{ weather.country }}</span>
+					<p>few clouds</p>
+				</div>
+				<img src="https://openweathermap.org/img/wn/{{weather.icon}}@2x.png" alt="weather icon" class="size-30" />
+				<div class="bg-slate-50/25 size-full content-center">
+					<p class="text-5xl font-black font-mono">{{ weather.temperature }}°C</p>
+				</div>
+				<div class="bg-slate-50/25 size-full tracking-widest">
+					<div class="divide-y divide-sky-500">
+						<div class="text-lg font-bold">Details</div>
+						<div class="font-light py-3">
+							<div class="grid justify-items-start justify-evenly ml-10">
+								<p>humidity: <span class="font-bold">{{ weather.humidity }}%</span></p>
+								<p>description: <span class="font-bold">claud</span></p>
+								<p>wind: <span class="font-bold">{{ weather.wind }}mph</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-span-2 font-light">
+					<div class="flex space-x-5">
+						<span>fells like: <span class="font-bold">{{ weather.feels_like }}</span></span>
+						<span>sun rise: <span class="font-bold">{{ weather.sun_rise }}</span></span>
+						<span>local time: <span class="font-bold">{{ weather.timezone }}</span> </span>
+					</div>
+				</div>
+			</div>
 			{% else %}
 			<p class="mt=8">No weather data available for {{ city }}</p>
 			{% endif %} {% endif %}
