@@ -28,7 +28,8 @@ class WeatherApp:
             data = response.json()
             pprint.pprint(data)
             local_time = self.calculate_local_time(time.time(),data['timezone'])
-            sun_rise  = self.calculate_local_time(data['sys']['sunrise'],data['timezone'])
+            sun_rise = self.calculate_local_time(data['sys']['sunrise'],data['timezone'])
+            sun_set = self.calculate_local_time(data['sys']['sunset'],data['timezone'])
             weather = {
                 "temperature": int(data['main']['temp']),
                 "icon": data['weather'][0]['icon'],
@@ -38,6 +39,7 @@ class WeatherApp:
                 'country': data['sys']['country'],
                 'feels_like': int(data['main']['feels_like']),
                 'sun_rise': sun_rise,
+                'sun_set' : sun_set,
                 'timezone': local_time
             }
             return render_template('home.html', weather=weather, city=city)
