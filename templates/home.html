@@ -31,37 +31,41 @@
 			</div>
 
 			{% with messages = get_flashed_messages() %} {% if messages %} {% for msg in messages %} {{ msg }} {% endfor %} {%
-			endif %} {% endwith %} {% if weather %} {% if city %}
+			endif %} {% endwith %} {% if forecasts %} {% if city %}
+
 			<div
 				class="grid grid-cols-2 grid-rows-3 gap-y-3 justify-items-center mx-auto items-center rounded-lg bg-orange-50/20">
+				{% for forecast in forecasts %}
 				<div>
-					<span class="font-semibold text-2xl justify-items-end">{{ city }}, {{ weather.country }}</span>
+					<span class="font-semibold text-2xl justify-items-end">{{ city }}, {{ forecast.country }}</span>
 					<p>few clouds</p>
 				</div>
-				<img src="https://openweathermap.org/img/wn/{{weather.icon}}@2x.png" alt="weather icon" class="size-30" />
+				<img src="https://openweathermap.org/img/wn/{{forecast.icon}}@2x.png" alt="weather icon" class="size-30" />
 				<div class="bg-slate-50/25 size-full content-center">
-					<p class="text-5xl font-black font-mono">{{ weather.temperature }}°C</p>
+					<p class="text-5xl font-black font-mono">{{ forecast.temperature }}°C</p>
 				</div>
 				<div class="bg-slate-50/25 size-full tracking-widest">
 					<div class="divide-y divide-sky-500">
 						<div class="text-lg font-bold">Details</div>
 						<div class="font-light py-3">
 							<div class="grid justify-items-start justify-evenly ml-10">
-								<p>humidity: <span class="font-bold">{{ weather.humidity }}%</span></p>
+								<p>humidity: <span class="font-bold">{{ forecast.humidity }}%</span></p>
 								<p>description: <span class="font-bold">claud</span></p>
-								<p>wind: <span class="font-bold">{{ weather.wind }}mph</span></p>
+								<p>wind: <span class="font-bold">{{ forecast.wind }}mph</span></p>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-span-2 font-light">
 					<div class="flex space-x-5">
-						<span>fells like: <span class="font-bold">{{ weather.feels_like }}</span></span>
-						<span>sun rise: <span class="font-bold">{{ weather.sun_rise }}</span></span>
-						<span>sun set: <span class="font-bold">{{ weather.sun_set }}</span></span>
-						<span>local time: <span class="font-bold">{{ weather.timezone }}</span> </span>
+						<!-- <span>fells like: <span class="font-bold">{{ forecast.feels_like }}</span></span>
+						<span>sun rise: <span class="font-bold">{{ forecast.sun_rise }}</span></span>
+						<span>sun set: <span class="font-bold">{{ forecast.sun_set }}</span></span>
+						<span>local time: <span class="font-bold">{{ forecast.localtime }}</span> </span> -->
+						<span><span class="font-bold">{{ forecast.hours }}</span> </span>
 					</div>
 				</div>
+				{% endfor %}
 			</div>
 			{% else %}
 			<p class="mt=8">No weather data available for {{ city }}</p>
