@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash
-from datetime import datetime, timedelta
 import time
+from datetime import datetime, timezone,timedelta
 import requests,pprint
 import os
 
@@ -16,33 +16,54 @@ class WeatherApp:
         self.app.secret_key = os.environ.get('SECRET_KEY', 'default_secret_key')
         self.app.route('/', methods=['GET','POST'])(self.home)
 
-    def calculate_local_time(self, timestamp, timezone):
-        local_time = datetime.utcfromtimestamp(timestamp + timezone).strftime('%H:%M')
-        return local_time
+    def calculate_local_time(self, timestamp, timezone_offset):
+        utc_time = datetime.utcfromtimestamp(timestamp)
+        timezone_offset_seconds = timezone_offset
+        local_time = utc_time + timedelta(seconds=timezone_offset_seconds)
+
+        return local_time.strftime('%H:%M')
+
+    def extract_only_time_from_dt_string(self, datetime_string):
+        #Parse the datetime string to a datetime object
+        dt_object = datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
+        #Extract only the time excluding the date
+        only_time = dt_object.strftime('%H:%M')
+        return only_time
+
 
     def get_weather(self, city):
-        url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={self.api_key}&units=metric'
+        url = f'https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={self.api_key}&units=metric&cnt=5'
         response = requests.get(url)
 
         if response.status_code == 200:
             data = response.json()
-            pprint.pprint(data)
-            local_time = self.calculate_local_time(time.time(),data['timezone'])
-            sun_rise = self.calculate_local_time(data['sys']['sunrise'],data['timezone'])
-            sun_set = self.calculate_local_time(data['sys']['sunset'],data['timezone'])
-            weather = {
-                "temperature": int(data['main']['temp']),
-                "icon": data['weather'][0]['icon'],
-                "description": data['weather'][0]['description'],
-                'humidity': int(data['main']['humidity']),
-                'wind': int(data['wind']['speed']),
-                'country': data['sys']['country'],
-                'feels_like': int(data['main']['feels_like']),
-                'sun_rise': sun_rise,
-                'sun_set' : sun_set,
-                'timezone': local_time
-            }
-            return render_template('home.html', weather=weather, city=city)
+            forecasts = []
+
+            for forecast in data['list']:
+                # local_time = self.calculate_local_time(time.time(),data['city']['timezone'])
+                local_time = self.calculate_local_time(forecast['dt'], data['city']['timezone'])
+                sun_rise = self.calculate_local_time(data['city']['sunrise'],data['city']['timezone'])
+                sun_set = self.calculate_local_time(data['city']['sunset'],data['city']['timezone'])
+                # data_time = self.calculate_local_time(data['city']['dt'])
+                every_3_hours = self.extract_only_time_from_dt_string(forecast['dt_txt'])
+
+                weather = {
+                    "temperature": int(forecast['main']['temp']),
+                    'icon': forecast['weather'][0]['icon'],
+                    "description": forecast['weather'][0]['description'],
+                    'humidity': forecast['main']['humidity'],
+                    'wind': int(forecast['wind']['speed']),
+                    'country': data['city']['country'],
+                    'feels_like': int(forecast['main']['feels_like']),
+                    # 'data_time': int(forecast['dt']),
+                    'sun_rise': sun_rise,
+                    'sun_set' : sun_set,
+                    'timezone': local_time,
+                    'hours': every_3_hours
+                }
+                forecasts.append(weather)
+
+            return render_template('home.html', forecasts=forecasts, city=city)
         elif response.status_code == 404:
             flash('City not found. Please enter a valid city name', 'error')
         else:
