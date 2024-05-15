@@ -4,14 +4,14 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>weather forecast</title>
-		<link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}" />
+		<title>Weather Forecast</title>
+		<link rel="stylesheet" href="{{url_for('static', filename='dist/css/output.css')}}" />
 	</head>
 	<body
-		class="flex justify-center items-center bg-cover bg-center bg-no-repeat h-screen"
+		class="justify-center items-center bg-cover bg-center bg-no-repeat h-screen"
 		style="background-image: url('../static/img/bg.jpeg')">
-		<div class="container mx-auto w-full text-center opacity-75">
-			<h1 class="text-4xl font-bold text-center mt-8 text-greey-300">weather forecast</h1>
+		<div class="container mx-auto text-center opacity-75">
+			<h1 class="text-4xl font-bold text-center mt-8 text-grey-300">Weather Forecast</h1>
 			<div class="inline-block m-8 opacity-75">
 				<form action="/" method="POST">
 					<label class="relative block">
@@ -32,12 +32,12 @@
 
 			{% with messages = get_flashed_messages() %} {% if messages %} {% for msg in messages %} {{ msg }} {% endfor %} {%
 			endif %} {% endwith %} {% if forecasts %} {% if city %}
-
 			<div
-				class="grid grid-cols-2 grid-rows-3 gap-y-3 justify-items-center mx-auto items-center rounded-lg bg-orange-50/20">
-				{% for forecast in forecasts %}
+				class="grid grid-cols-2 grid-rows-3 justify-items-center mx-auto items-center rounded-lg max-w-40 bg-orange-50/20">
+				{% for forecast in forecasts %} {% if loop.index == 1 %}
 				<div>
-					<span class="font-semibold text-2xl justify-items-end">{{ city }}, {{ forecast.country }}</span>
+					<span class="font-semibold text-2xl">{{ city }}, {{ forecast.country }}</span>
+					<p class="font-thin">{{ forecast.timezone }}</p>
 					<p>few clouds</p>
 				</div>
 				<img src="https://openweathermap.org/img/wn/{{forecast.icon}}@2x.png" alt="weather icon" class="size-30" />
@@ -50,25 +50,36 @@
 						<div class="font-light py-3">
 							<div class="grid justify-items-start justify-evenly ml-10">
 								<p>humidity: <span class="font-bold">{{ forecast.humidity }}%</span></p>
-								<p>description: <span class="font-bold">claud</span></p>
-								<p>wind: <span class="font-bold">{{ forecast.wind }}mph</span></p>
+								<p>description: <span class="font-bold">cloud</span></p>
+								<p>wind: <span class="font-bold">{{ forecast.wind }} mph</span></p>
+							</div>
+						</div>
+						<div class="mx-auto col-span-2 font-light">
+							<div class="inline-flex w-full justify-evenly">
+								<span>feels like: <span class="font-bold">{{ forecast.feels_like }}</span></span>
+								<span>sun rise: <span class="font-bold">{{ forecast.sun_rise }}</span></span>
+								<span>sun set: <span class="font-bold">{{ forecast.sun_set }}</span></span>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-span-2 font-light">
-					<div class="flex space-x-5">
-						<!-- <span>fells like: <span class="font-bold">{{ forecast.feels_like }}</span></span>
-						<span>sun rise: <span class="font-bold">{{ forecast.sun_rise }}</span></span>
-						<span>sun set: <span class="font-bold">{{ forecast.sun_set }}</span></span>
-						<span>local time: <span class="font-bold">{{ forecast.localtime }}</span> </span> -->
-						<span><span class="font-bold">{{ forecast.hours }}</span> </span>
+				{% endif %} {% endfor %}
+
+				<div
+					class="inline-flex flex-col gap-4 col-span-2 justify-evenly w-full mx-auto size-full bg-slate-50/25 font-light">
+					{% for forecast in forecasts %} {% if loop.index > 1 %}
+					<div class="flex-col items-center">
+						<p class="font-bold">{{ forecast.hours }}</p>
+						<img src="https://openweathermap.org/img/wn/{{forecast.icon}}@2x.png" alt="weather icon" class="size-30" />
+						<p class="font-bold">{{ forecast.temperature }}°C</p>
+						<p></p>
 					</div>
+
+					{% endif %} {% endfor %}
 				</div>
-				{% endfor %}
 			</div>
 			{% else %}
-			<p class="mt=8">No weather data available for {{ city }}</p>
+			<p class="mt-8">No weather data available for {{ city }}</p>
 			{% endif %} {% endif %}
 		</div>
 	</body>
