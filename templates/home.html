@@ -9,10 +9,10 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='dist/css/output.css')}}" />
 </head>
 
-<body class="bg-cover bg-center bg-no-repeat h-screen capitalize" style="background-image: url('../static/img/bg.jpeg')">
+<body class="bg-cover bg-center bg-no-repeat capitalize min-h-screen" style="background-image: url('../static/img/bg.jpeg')">
 	<div class="container mx-auto">
 		<div class="mx-auto text-center mt-10 ">
-			<h1 class="text-4xl font-bold text-stone-700 ">Weather Forecast</h1>
+			<h1 class="text-4xl font-bold text-white ">Weather Forecast</h1>
 			<div class="inline-block m-8 opacity-50 w-96">
 				<form action="/" method="POST">
 					<label class="relative block">
@@ -25,24 +25,29 @@
 							placeholder="Search..." type="text" name="city" id="city" required />
 					</label>
 				</form>
+				<div class="w-full px-4 py-4 text-base leading-5 text-white rounded-lg font-regular">
+					<div class="mr-auto">
+						<span class="bg-slate-900">{% with messages = get_flashed_messages() %}
+							{% if messages %}
+							{% for msg in messages %}
+							{{ msg }}
+							{% endfor %}
+							{% endif %}
+							{% endwith %}
+						</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	{% for msg in messages %}
-	{{ msg }}
-	{% endfor %}
-	{% endif %}
-	{% endwith %}
 
 
 	{% if city %}
 	{% for day, forecast in forecasts_by_day.items() %}
 	{% if loop.index == 1 %}
 	<div class="max-w-screen-lg mx-auto text-slate-50 rounded-md bg-slate-500/20">
-		<div class="grid grid-cols-2 justify-items-center border-b-2">
+		<div class="grid grid-cols-2 justify-items-center">
 			<div class="m-5">
 				<p class="font-semibold text-2xl">{{ city }}</p>
 				<p class="font-thin">{{ forecast.time }}</p>
@@ -81,11 +86,11 @@
 			{% endfor %}
 		</div>
 
-		<div class="forecast-container mt-5">
+		<div class="forecast-container">
 			<div class="flex columns-auto text-center justify-evenly p-5 text-stone-500 bg-slate-300/15 rounded-md border-b-2">
 				{% set displayed_days = [] %}
 				{% for day, forecasts in forecasts_by_day.items() %}
-				{% if day not in displayed_days and displayed_days|length < 5 %} <span class="border">
+				{% if day not in displayed_days and displayed_days|length < 5 %} <span class="border p-4">
 					<p>{{ day }}</p>
 					<p><img src="https://openweathermap.org/img/wn/{{ forecasts[0].icon }}@2x.png" alt="weather icon" /></p>
 					<p>{{ forecasts[0].temperature }}°C</p>
@@ -95,7 +100,6 @@
 					{% endfor %}
 			</div>
 		</div>
-
 	</div>
 	{% endif %}
 	{% endfor %}
