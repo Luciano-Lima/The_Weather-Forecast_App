@@ -10,19 +10,19 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
-  /* 1 */
-  border-width: 0;
-  /* 2 */
-  border-style: solid;
-  /* 2 */
-  border-color: #e5e7eb;
-  /* 2 */
+	box-sizing: border-box;
+	/* 1 */
+	border-width: 0;
+	/* 2 */
+	border-style: solid;
+	/* 2 */
+	border-color: #a5b7b1;
+	/* 2 */
 }
 
 ::before,
 ::after {
-  --tw-content: '';
+	--tw-content: '';
 }
 
 /*
@@ -37,23 +37,24 @@
 
 html,
 :host {
-  line-height: 1.5;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  -moz-tab-size: 4;
-  /* 3 */
-  -o-tab-size: 4;
-     tab-size: 4;
-  /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* 4 */
-  font-feature-settings: normal;
-  /* 5 */
-  font-variation-settings: normal;
-  /* 6 */
-  -webkit-tap-highlight-color: transparent;
-  /* 7 */
+	line-height: 1.5;
+	/* 1 */
+	-webkit-text-size-adjust: 100%;
+	/* 2 */
+	-moz-tab-size: 4;
+	/* 3 */
+	-o-tab-size: 4;
+	tab-size: 4;
+	/* 3 */
+	font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+		'Noto Color Emoji';
+	/* 4 */
+	font-feature-settings: normal;
+	/* 5 */
+	font-variation-settings: normal;
+	/* 6 */
+	-webkit-tap-highlight-color: transparent;
+	/* 7 */
 }
 
 /*
@@ -62,10 +63,10 @@ html,
 */
 
 body {
-  margin: 0;
-  /* 1 */
-  line-height: inherit;
-  /* 2 */
+	margin: 0;
+	/* 1 */
+	line-height: inherit;
+	/* 2 */
 }
 
 /*
@@ -75,12 +76,12 @@ body {
 */
 
 hr {
-  height: 0;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  border-top-width: 1px;
-  /* 3 */
+	height: 0;
+	/* 1 */
+	color: inherit;
+	/* 2 */
+	border-top-width: 1px;
+	/* 3 */
 }
 
 /*
@@ -88,8 +89,8 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 */
 
 abbr:where([title]) {
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+	-webkit-text-decoration: underline dotted;
+	text-decoration: underline dotted;
 }
 
 /*
@@ -102,8 +103,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: inherit;
-  font-weight: inherit;
+	font-size: inherit;
+	font-weight: inherit;
 }
 
 /*
@@ -111,8 +112,8 @@ Reset links to optimize for opt-in styling instead of opt-out.
 */
 
 a {
-  color: inherit;
-  text-decoration: inherit;
+	color: inherit;
+	text-decoration: inherit;
 }
 
 /*
@@ -121,7 +122,7 @@ Add the correct font weight in Edge and Safari.
 
 b,
 strong {
-  font-weight: bolder;
+	font-weight: bolder;
 }
 
 /*
@@ -135,14 +136,14 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /* 1 */
-  font-feature-settings: normal;
-  /* 2 */
-  font-variation-settings: normal;
-  /* 3 */
-  font-size: 1em;
-  /* 4 */
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+	/* 1 */
+	font-feature-settings: normal;
+	/* 2 */
+	font-variation-settings: normal;
+	/* 3 */
+	font-size: 1em;
+	/* 4 */
 }
 
 /*
@@ -150,7 +151,7 @@ Add the correct font size in all browsers.
 */
 
 small {
-  font-size: 80%;
+	font-size: 80%;
 }
 
 /*
@@ -159,18 +160,18 @@ Prevent `sub` and `sup` elements from affecting the line height in all browsers.
 
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
 }
 
 sub {
-  bottom: -0.25em;
+	bottom: -0.25em;
 }
 
 sup {
-  top: -0.5em;
+	top: -0.5em;
 }
 
 /*
@@ -180,12 +181,12 @@ sup {
 */
 
 table {
-  text-indent: 0;
-  /* 1 */
-  border-color: inherit;
-  /* 2 */
-  border-collapse: collapse;
-  /* 3 */
+	text-indent: 0;
+	/* 1 */
+	border-color: inherit;
+	/* 2 */
+	border-collapse: collapse;
+	/* 3 */
 }
 
 /*
@@ -199,26 +200,26 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
-  /* 1 */
-  font-feature-settings: inherit;
-  /* 1 */
-  font-variation-settings: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  font-weight: inherit;
-  /* 1 */
-  line-height: inherit;
-  /* 1 */
-  letter-spacing: inherit;
-  /* 1 */
-  color: inherit;
-  /* 1 */
-  margin: 0;
-  /* 2 */
-  padding: 0;
-  /* 3 */
+	font-family: inherit;
+	/* 1 */
+	font-feature-settings: inherit;
+	/* 1 */
+	font-variation-settings: inherit;
+	/* 1 */
+	font-size: 100%;
+	/* 1 */
+	font-weight: inherit;
+	/* 1 */
+	line-height: inherit;
+	/* 1 */
+	letter-spacing: inherit;
+	/* 1 */
+	color: inherit;
+	/* 1 */
+	margin: 0;
+	/* 2 */
+	padding: 0;
+	/* 3 */
 }
 
 /*
@@ -227,7 +228,7 @@ Remove the inheritance of text transform in Edge and Firefox.
 
 button,
 select {
-  text-transform: none;
+	text-transform: none;
 }
 
 /*
@@ -239,12 +240,12 @@ button,
 input:where([type='button']),
 input:where([type='reset']),
 input:where([type='submit']) {
-  -webkit-appearance: button;
-  /* 1 */
-  background-color: transparent;
-  /* 2 */
-  background-image: none;
-  /* 2 */
+	-webkit-appearance: button;
+	/* 1 */
+	background-color: transparent;
+	/* 2 */
+	background-image: none;
+	/* 2 */
 }
 
 /*
@@ -252,7 +253,7 @@ Use the modern Firefox focus style for all focusable elements.
 */
 
 :-moz-focusring {
-  outline: auto;
+	outline: auto;
 }
 
 /*
@@ -260,7 +261,7 @@ Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/
 */
 
 :-moz-ui-invalid {
-  box-shadow: none;
+	box-shadow: none;
 }
 
 /*
@@ -268,7 +269,7 @@ Add the correct vertical alignment in Chrome and Firefox.
 */
 
 progress {
-  vertical-align: baseline;
+	vertical-align: baseline;
 }
 
 /*
@@ -277,7 +278,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
-  height: auto;
+	height: auto;
 }
 
 /*
@@ -286,10 +287,10 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+	-webkit-appearance: textfield;
+	/* 1 */
+	outline-offset: -2px;
+	/* 2 */
 }
 
 /*
@@ -297,7 +298,7 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-search-decoration {
-  -webkit-appearance: none;
+	-webkit-appearance: none;
 }
 
 /*
@@ -306,10 +307,10 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+	-webkit-appearance: button;
+	/* 1 */
+	font: inherit;
+	/* 2 */
 }
 
 /*
@@ -317,7 +318,7 @@ Add the correct display in Chrome and Safari.
 */
 
 summary {
-  display: list-item;
+	display: list-item;
 }
 
 /*
@@ -337,24 +338,24 @@ hr,
 figure,
 p,
 pre {
-  margin: 0;
+	margin: 0;
 }
 
 fieldset {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 legend {
-  padding: 0;
+	padding: 0;
 }
 
 ol,
 ul,
 menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 /*
@@ -362,7 +363,7 @@ Reset default styling for dialogs.
 */
 
 dialog {
-  padding: 0;
+	padding: 0;
 }
 
 /*
@@ -370,7 +371,7 @@ Prevent resizing textareas horizontally by default.
 */
 
 textarea {
-  resize: vertical;
+	resize: vertical;
 }
 
 /*
@@ -378,19 +379,20 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder, textarea::-moz-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+	opacity: 1;
+	/* 1 */
+	color: #9ca3af;
+	/* 2 */
 }
 
 input::placeholder,
 textarea::placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
+	opacity: 1;
+	/* 1 */
+	color: #9ca3af;
+	/* 2 */
 }
 
 /*
@@ -398,8 +400,8 @@ Set the default cursor for buttons.
 */
 
 button,
-[role="button"] {
-  cursor: pointer;
+[role='button'] {
+	cursor: pointer;
 }
 
 /*
@@ -407,7 +409,7 @@ Make sure disabled buttons don't get the pointer cursor.
 */
 
 :disabled {
-  cursor: default;
+	cursor: default;
 }
 
 /*
@@ -424,10 +426,10 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
-  /* 1 */
-  vertical-align: middle;
-  /* 2 */
+	display: block;
+	/* 1 */
+	vertical-align: middle;
+	/* 2 */
 }
 
 /*
@@ -436,482 +438,499 @@ Constrain images and videos to the parent width and preserve their intrinsic asp
 
 img,
 video {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
 
 [hidden] {
-  display: none;
+	display: none;
 }
 
-*, ::before, ::after {
-  --tw-border-spacing-x: 0;
-  --tw-border-spacing-y: 0;
-  --tw-translate-x: 0;
-  --tw-translate-y: 0;
-  --tw-rotate: 0;
-  --tw-skew-x: 0;
-  --tw-skew-y: 0;
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
-  --tw-pan-x:  ;
-  --tw-pan-y:  ;
-  --tw-pinch-zoom:  ;
-  --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position:  ;
-  --tw-gradient-via-position:  ;
-  --tw-gradient-to-position:  ;
-  --tw-ordinal:  ;
-  --tw-slashed-zero:  ;
-  --tw-numeric-figure:  ;
-  --tw-numeric-spacing:  ;
-  --tw-numeric-fraction:  ;
-  --tw-ring-inset:  ;
-  --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgb(59 130 246 / 0.5);
-  --tw-ring-offset-shadow: 0 0 #0000;
-  --tw-ring-shadow: 0 0 #0000;
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  --tw-blur:  ;
-  --tw-brightness:  ;
-  --tw-contrast:  ;
-  --tw-grayscale:  ;
-  --tw-hue-rotate:  ;
-  --tw-invert:  ;
-  --tw-saturate:  ;
-  --tw-sepia:  ;
-  --tw-drop-shadow:  ;
-  --tw-backdrop-blur:  ;
-  --tw-backdrop-brightness:  ;
-  --tw-backdrop-contrast:  ;
-  --tw-backdrop-grayscale:  ;
-  --tw-backdrop-hue-rotate:  ;
-  --tw-backdrop-invert:  ;
-  --tw-backdrop-opacity:  ;
-  --tw-backdrop-saturate:  ;
-  --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
+*,
+::before,
+::after {
+	--tw-border-spacing-x: 0;
+	--tw-border-spacing-y: 0;
+	--tw-translate-x: 0;
+	--tw-translate-y: 0;
+	--tw-rotate: 0;
+	--tw-skew-x: 0;
+	--tw-skew-y: 0;
+	--tw-scale-x: 1;
+	--tw-scale-y: 1;
+	--tw-pan-x: ;
+	--tw-pan-y: ;
+	--tw-pinch-zoom: ;
+	--tw-scroll-snap-strictness: proximity;
+	--tw-gradient-from-position: ;
+	--tw-gradient-via-position: ;
+	--tw-gradient-to-position: ;
+	--tw-ordinal: ;
+	--tw-slashed-zero: ;
+	--tw-numeric-figure: ;
+	--tw-numeric-spacing: ;
+	--tw-numeric-fraction: ;
+	--tw-ring-inset: ;
+	--tw-ring-offset-width: 0px;
+	--tw-ring-offset-color: #fff;
+	--tw-ring-color: rgb(59 130 246 / 0.5);
+	--tw-ring-offset-shadow: 0 0 #0000;
+	--tw-ring-shadow: 0 0 #0000;
+	--tw-shadow: 0 0 #0000;
+	--tw-shadow-colored: 0 0 #0000;
+	--tw-blur: ;
+	--tw-brightness: ;
+	--tw-contrast: ;
+	--tw-grayscale: ;
+	--tw-hue-rotate: ;
+	--tw-invert: ;
+	--tw-saturate: ;
+	--tw-sepia: ;
+	--tw-drop-shadow: ;
+	--tw-backdrop-blur: ;
+	--tw-backdrop-brightness: ;
+	--tw-backdrop-contrast: ;
+	--tw-backdrop-grayscale: ;
+	--tw-backdrop-hue-rotate: ;
+	--tw-backdrop-invert: ;
+	--tw-backdrop-opacity: ;
+	--tw-backdrop-saturate: ;
+	--tw-backdrop-sepia: ;
+	--tw-contain-size: ;
+	--tw-contain-layout: ;
+	--tw-contain-paint: ;
+	--tw-contain-style: ;
 }
 
 ::backdrop {
-  --tw-border-spacing-x: 0;
-  --tw-border-spacing-y: 0;
-  --tw-translate-x: 0;
-  --tw-translate-y: 0;
-  --tw-rotate: 0;
-  --tw-skew-x: 0;
-  --tw-skew-y: 0;
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
-  --tw-pan-x:  ;
-  --tw-pan-y:  ;
-  --tw-pinch-zoom:  ;
-  --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position:  ;
-  --tw-gradient-via-position:  ;
-  --tw-gradient-to-position:  ;
-  --tw-ordinal:  ;
-  --tw-slashed-zero:  ;
-  --tw-numeric-figure:  ;
-  --tw-numeric-spacing:  ;
-  --tw-numeric-fraction:  ;
-  --tw-ring-inset:  ;
-  --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgb(59 130 246 / 0.5);
-  --tw-ring-offset-shadow: 0 0 #0000;
-  --tw-ring-shadow: 0 0 #0000;
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  --tw-blur:  ;
-  --tw-brightness:  ;
-  --tw-contrast:  ;
-  --tw-grayscale:  ;
-  --tw-hue-rotate:  ;
-  --tw-invert:  ;
-  --tw-saturate:  ;
-  --tw-sepia:  ;
-  --tw-drop-shadow:  ;
-  --tw-backdrop-blur:  ;
-  --tw-backdrop-brightness:  ;
-  --tw-backdrop-contrast:  ;
-  --tw-backdrop-grayscale:  ;
-  --tw-backdrop-hue-rotate:  ;
-  --tw-backdrop-invert:  ;
-  --tw-backdrop-opacity:  ;
-  --tw-backdrop-saturate:  ;
-  --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
+	--tw-border-spacing-x: 0;
+	--tw-border-spacing-y: 0;
+	--tw-translate-x: 0;
+	--tw-translate-y: 0;
+	--tw-rotate: 0;
+	--tw-skew-x: 0;
+	--tw-skew-y: 0;
+	--tw-scale-x: 1;
+	--tw-scale-y: 1;
+	--tw-pan-x: ;
+	--tw-pan-y: ;
+	--tw-pinch-zoom: ;
+	--tw-scroll-snap-strictness: proximity;
+	--tw-gradient-from-position: ;
+	--tw-gradient-via-position: ;
+	--tw-gradient-to-position: ;
+	--tw-ordinal: ;
+	--tw-slashed-zero: ;
+	--tw-numeric-figure: ;
+	--tw-numeric-spacing: ;
+	--tw-numeric-fraction: ;
+	--tw-ring-inset: ;
+	--tw-ring-offset-width: 0px;
+	--tw-ring-offset-color: #fff;
+	--tw-ring-color: rgb(59 130 246 / 0.5);
+	--tw-ring-offset-shadow: 0 0 #0000;
+	--tw-ring-shadow: 0 0 #0000;
+	--tw-shadow: 0 0 #0000;
+	--tw-shadow-colored: 0 0 #0000;
+	--tw-blur: ;
+	--tw-brightness: ;
+	--tw-contrast: ;
+	--tw-grayscale: ;
+	--tw-hue-rotate: ;
+	--tw-invert: ;
+	--tw-saturate: ;
+	--tw-sepia: ;
+	--tw-drop-shadow: ;
+	--tw-backdrop-blur: ;
+	--tw-backdrop-brightness: ;
+	--tw-backdrop-contrast: ;
+	--tw-backdrop-grayscale: ;
+	--tw-backdrop-hue-rotate: ;
+	--tw-backdrop-invert: ;
+	--tw-backdrop-opacity: ;
+	--tw-backdrop-saturate: ;
+	--tw-backdrop-sepia: ;
+	--tw-contain-size: ;
+	--tw-contain-layout: ;
+	--tw-contain-paint: ;
+	--tw-contain-style: ;
 }
 
 .container {
-  width: 100%;
+	width: 100%;
 }
 
 @media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
+	.container {
+		max-width: 640px;
+	}
 }
 
 @media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
+	.container {
+		max-width: 768px;
+	}
 }
 
 @media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
+	.container {
+		max-width: 1024px;
+	}
 }
 
 @media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
+	.container {
+		max-width: 1280px;
+	}
 }
 
 @media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
+	.container {
+		max-width: 1536px;
+	}
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
 }
 
 .static {
-  position: static;
+	position: static;
 }
 
 .absolute {
-  position: absolute;
+	position: absolute;
 }
 
 .relative {
-  position: relative;
+	position: relative;
 }
 
 .inset-y-0 {
-  top: 0px;
-  bottom: 0px;
+	top: 0px;
+	bottom: 0px;
 }
 
 .left-0 {
-  left: 0px;
+	left: 0px;
 }
 
-.col-span-2 {
-  grid-column: span 2 / span 2;
+.m-5 {
+	margin: 1.25rem;
 }
 
 .m-8 {
-  margin: 2rem;
+	margin: 2rem;
 }
 
 .mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.ml-10 {
-  margin-left: 2.5rem;
+.mr-12 {
+	margin-right: 3rem;
 }
 
-.mt-8 {
-  margin-top: 2rem;
+.mt-10 {
+	margin-top: 2.5rem;
 }
 
 .block {
-  display: block;
+	display: block;
 }
 
 .inline-block {
-  display: inline-block;
+	display: inline-block;
 }
 
 .flex {
-  display: flex;
+	display: flex;
+}
+
+.inline-flex {
+	display: inline-flex;
 }
 
 .grid {
-  display: grid;
-}
-
-.size-full {
-  width: 100%;
-  height: 100%;
+	display: grid;
 }
 
 .h-5 {
-  height: 1.25rem;
+	height: 1.25rem;
 }
 
-.h-screen {
-  height: 100vh;
+.min-h-screen {
+	min-height: 100vh;
 }
 
 .w-4 {
-  width: 1rem;
+	width: 1rem;
+}
+
+.w-52 {
+	width: 13rem;
+}
+
+.w-96 {
+	width: 24rem;
 }
 
 .w-full {
-  width: 100%;
+	width: 100%;
+}
+
+.max-w-screen-lg {
+	max-width: 1024px;
+}
+
+.columns-4 {
+	-moz-columns: 4;
+	columns: 4;
+}
+
+.columns-auto {
+	-moz-columns: auto;
+	columns: auto;
 }
 
 .grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-rows-3 {
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-}
-
-.content-center {
-  align-content: center;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .items-center {
-  align-items: center;
+	align-items: center;
 }
 
 .justify-center {
-  justify-content: center;
+	justify-content: center;
 }
 
 .justify-evenly {
-  justify-content: space-evenly;
-}
-
-.justify-items-start {
-  justify-items: start;
-}
-
-.justify-items-end {
-  justify-items: end;
+	justify-content: space-evenly;
 }
 
 .justify-items-center {
-  justify-items: center;
+	justify-items: center;
 }
 
-.gap-y-3 {
-  row-gap: 0.75rem;
-}
-
-.space-x-5 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
-  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.divide-y > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-}
-
-.divide-sky-500 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-opacity: 1;
-  border-color: rgb(14 165 233 / var(--tw-divide-opacity));
+.gap-2 {
+	gap: 0.5rem;
 }
 
 .rounded-lg {
-  border-radius: 0.5rem;
+	border-radius: 0.5rem;
 }
 
 .rounded-md {
-  border-radius: 0.375rem;
+	border-radius: 0.375rem;
 }
 
 .border {
-  border-width: 1px;
+	border-width: 1px;
+}
+
+.border-b-2 {
+	border-bottom-width: 2px;
 }
 
 .border-slate-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(203 213 225 / var(--tw-border-opacity));
+	--tw-border-opacity: 1;
+	border-color: rgb(203 213 225 / var(--tw-border-opacity));
 }
 
-.bg-orange-50\/20 {
-  background-color: rgb(255 247 237 / 0.2);
+.bg-gray-900\/10 {
+	background-color: rgb(17 24 39 / 0.1);
 }
 
-.bg-slate-50\/25 {
-  background-color: rgb(248 250 252 / 0.25);
+.bg-slate-300\/15 {
+	background-color: rgb(203 213 225 / 0.15);
+}
+
+.bg-slate-500\/20 {
+	background-color: rgb(226 185 165 / 27%);
 }
 
 .bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+	--tw-bg-opacity: 1;
+	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-cover {
-  background-size: cover;
+	background-size: cover;
 }
 
 .bg-center {
-  background-position: center;
+	background-position: center;
 }
 
 .bg-no-repeat {
-  background-repeat: no-repeat;
+	background-repeat: no-repeat;
+}
+
+.p-4 {
+	padding: 1rem;
+}
+
+.p-5 {
+	padding: 1.25rem;
+}
+
+.px-4 {
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 .py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 }
 
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+.py-4 {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
 .pl-2 {
-  padding-left: 0.5rem;
+	padding-left: 0.5rem;
 }
 
 .pl-9 {
-  padding-left: 2.25rem;
+	padding-left: 2.25rem;
 }
 
 .pr-3 {
-  padding-right: 0.75rem;
+	padding-right: 0.75rem;
 }
 
 .text-center {
-  text-align: center;
+	text-align: center;
 }
 
 .font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 .text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+	font-size: 1.5rem;
+	line-height: 2rem;
 }
 
 .text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+	font-size: 2.25rem;
+	line-height: 2.5rem;
 }
 
 .font-black {
-  font-weight: 900;
+	font-weight: 900;
 }
 
 .font-bold {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 .font-light {
-  font-weight: 300;
+	font-weight: 300;
 }
 
 .font-semibold {
-  font-weight: 600;
+	font-weight: 600;
+}
+
+.font-thin {
+	font-weight: 100;
 }
 
 .capitalize {
-  text-transform: capitalize;
+	text-transform: capitalize;
 }
 
-.tracking-widest {
-  letter-spacing: 0.1em;
+.text-gray-900 {
+	--tw-text-opacity: 1;
+	color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.text-sky-950\/75 {
-  color: rgb(8 47 73 / 0.75);
+.text-slate-50 {
+	--tw-text-opacity: 1;
+	color: rgb(248 250 252 / var(--tw-text-opacity));
+}
+
+.text-stone-500 {
+	--tw-text-opacity: 1;
+	color: rgb(120 113 108 / var(--tw-text-opacity));
+}
+
+.text-white {
+	--tw-text-opacity: 1;
+	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .opacity-25 {
-  opacity: 0.25;
+	opacity: 0.25;
 }
 
-.opacity-75 {
-  opacity: 0.75;
+.opacity-50 {
+	opacity: 0.5;
 }
 
 .shadow-sm {
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+	--tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .placeholder\:italic::-moz-placeholder {
-  font-style: italic;
+	font-style: italic;
 }
 
 .placeholder\:italic::placeholder {
-  font-style: italic;
+	font-style: italic;
 }
 
 .placeholder\:text-slate-400::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
+	--tw-text-opacity: 1;
+	color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 .placeholder\:text-slate-400::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
+	--tw-text-opacity: 1;
+	color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 .focus\:border-sky-500:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(14 165 233 / var(--tw-border-opacity));
+	--tw-border-opacity: 1;
+	border-color: rgb(14 165 233 / var(--tw-border-opacity));
 }
 
 .focus\:outline-none:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+	outline: 2px solid transparent;
+	outline-offset: 2px;
 }
 
 .focus\:ring-1:focus {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
 .focus\:ring-sky-500:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(14 165 233 / var(--tw-ring-opacity));
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgb(14 165 233 / var(--tw-ring-opacity));
 }
 
 @media (min-width: 640px) {
-  .sm\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
+	.sm\:text-sm {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
 }
