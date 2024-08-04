@@ -19,12 +19,14 @@ class WeatherApp:
     def calculate_local_time(self, timestamp, timezone_offset):
         utc_time = datetime.utcfromtimestamp(timestamp)
         local_time = utc_time + timedelta(seconds=timezone_offset)
+
         return local_time.strftime('%Y-%m-%d %H:%M')
 
-    def extract_only_time_from_dt_string(self, datetime_string):
-        dt_object = datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
-        only_time = dt_object.strftime('%H:%M')
-        return only_time
+    # def extract_only_time_from_dt_string(self, datetime_string):
+    #     dt_object = datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
+    #     only_time = dt_object.strftime('%H:%M')
+    #     print('ONLY time', only_time)
+    #     return only_time
 
     def group_forecasts_by_day(self, forecasts, timezone_offset):
         forecasts_by_day = defaultdict(list)
@@ -43,17 +45,16 @@ class WeatherApp:
                 "humidity": forecast['main']['humidity'],
                 "wind": int(forecast['wind']['speed']),
                 "feels_like": int(forecast['main']['feels_like']),
-                "rain": forecast.get('rain', {}).get('3h', 0),
                 "dt_time": local_time,
             }
             forecasts_by_day[day_of_week].append(weather)
+
 
         return dict(forecasts_by_day)
 
     def get_weather(self, city):
         url = f'https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={self.api_key}&units=metric'
         response = requests.get(url)
-        print(url)
         if response.status_code == 200:
             data = response.json()
 
