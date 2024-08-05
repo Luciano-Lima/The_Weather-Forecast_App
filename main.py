@@ -66,6 +66,7 @@ class WeatherApp:
             flash('Error fetching weather data. Please try again', 'error')
         return render_template('index.html')
 
+
     def index(self):
         if request.method == 'POST':
             city = request.form['city']
