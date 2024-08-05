@@ -47,7 +47,7 @@
 		{% if city %}
 		{% for day, forecast in forecasts_by_day.items() %}
 		{% if loop.index == 1 %}
-		<div class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20">
+		<div class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20 shadow-lg shadow-blue-500/50">
 			<div class="grid grid-cols-2 justify-items-center">
 				<div class="m-5">
 					<p class="font-semibold text-2xl">{{ city }}</p>
@@ -88,10 +88,10 @@
 			</div>
 
 			<div class="forecast-container">
-				<div class="flex columns-auto text-center justify-evenly p-5 text-stone-500 bg-slate-300/15 rounded-md border-b-2">
+				<div class="flex columns-auto text-center justify-evenly p-5 rounded-md border-b-2">
 					{% set displayed_days = [] %}
 					{% for day, forecasts in forecasts_by_day.items() %}
-					{% if day not in displayed_days and displayed_days|length < 5 %} <span class="border p-4">
+					{% if day not in displayed_days and displayed_days|length < 5 %} <span class="border rounded-lg p-4">
 						<p>{{ day }}</p>
 						<p><img src="https://openweathermap.org/img/wn/{{ forecasts[0].icon }}@2x.png" alt="weather icon" /></p>
 						<p>{{ forecasts[0].temperature }}°C</p>
