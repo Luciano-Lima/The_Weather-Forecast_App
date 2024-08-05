@@ -14,7 +14,7 @@ class WeatherApp:
         self.app = Flask(__name__)
         self.api_key = os.environ.get('API_KEY')
         self.app.secret_key = os.environ.get('SECRET_KEY', 'default_secret_key')
-        self.app.route('/', methods=['GET', 'POST'])(self.home)
+        self.app.route('/', methods=['GET', 'POST'])(self.index)
 
     def calculate_local_time(self, timestamp, timezone_offset):
         utc_time = datetime.utcfromtimestamp(timestamp)
@@ -80,14 +80,14 @@ class WeatherApp:
 
             forecasts_by_day = self.group_forecasts_by_day(data['list'], data['city']['timezone'])
 
-            return render_template('home.html', forecasts_by_day=forecasts_by_day, city=city)
+            return render_template('index.html', forecasts_by_day=forecasts_by_day, city=city)
         elif response.status_code == 404:
             flash('City not found. Please enter a valid city name', 'error')
         else:
             flash('Error fetching weather data. Please try again', 'error')
-        return render_template('home.html')
+        return render_template('index.html')
 
-    def home(self):
+    def index(self):
         if request.method == 'POST':
             city = request.form['city']
 
@@ -95,7 +95,7 @@ class WeatherApp:
                 return self.get_weather(city)
             else:
                 flash('Please enter a city.', 'error')
-        return render_template('home.html')
+        return render_template('index.html')
 
     def run(self):
         self.app.run(debug=True)
