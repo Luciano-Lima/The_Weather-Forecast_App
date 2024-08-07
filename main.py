@@ -5,9 +5,10 @@ import requests, pprint
 import os
 
 from os import path
+from collections import defaultdict
+
 if path.exists('env.py'):
     import env
-from collections import defaultdict
 
 class WeatherApp:
     def __init__(self):
@@ -70,7 +71,6 @@ class WeatherApp:
     def index(self):
         if request.method == 'POST':
             city = request.form['city']
-
             if city:
                 return self.get_weather(city)
             else:
@@ -78,8 +78,8 @@ class WeatherApp:
         return render_template('index.html')
 
     def run(self):
-        self.app.run(debug=True)
         self.app.config['SEND_FILE_MAX_AGE_DEFAULT'] = -1
+        self.app.run()
 
 if __name__ == '__main__':
     weather_app = WeatherApp()
