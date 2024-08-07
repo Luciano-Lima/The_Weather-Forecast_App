@@ -1,1 +1,1 @@
-web: gunicorn main:app
+web: gunicorn main:my-weather-forecast-app.app
