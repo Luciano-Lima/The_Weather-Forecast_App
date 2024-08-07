@@ -14,7 +14,6 @@ class WeatherApp:
         self.app = Flask(__name__)
         self.api_key = os.environ.get('API_KEY')
         self.app.secret_key = os.environ.get('SECRET_KEY', 'default_secret_key')
-        # self.app.route('/', methods=['GET', 'POST'])(self.index)
         self.app.add_url_rule('/', 'index', self.index, methods=['GET', 'POST'])
 
     def calculate_local_time(self, timestamp, timezone_offset):
