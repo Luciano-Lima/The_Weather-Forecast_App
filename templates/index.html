@@ -10,7 +10,11 @@
 </head>
 
 <body class="capitalize">
-	<video src="../static/video/storm.mp4" style="position: absolute; bottom: 0; right: 0; min-height: 100vh; z-index: -1;"></video>
+	<div id="video_Background" style="position: absolute; bottom: 0; right: 0; min-height: 100vh; z-index: -1;">
+		<video autoplay muted>
+			<source src="../static/video/sunset.mp4">
+		</video>
+	</div>
 	<div class="container mx-auto">
 		<div class="mx-auto text-center m-5">
 			<h1 class="text-2xl text-white ">Weather Forecast</h1>
@@ -50,18 +54,17 @@
 		<div class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20 shadow-lg shadow-blue-500/50">
 			<div class="grid grid-cols-2 justify-items-center">
 				<div class="m-5">
-					<p class="font-semibold text-2xl">{{ city }}</p>
+					<p id="city" class="font-semibold text-2xl">{{ city }}</p>
 					<p class="font-thin">{{ forecast.dt_time }}</p>
 					<span class="inline-flex items-center">
 						<span class="text-1xl font-black font-mono">{{ forecast[0].temperature }}°C</span>
 						<span><img src="https://openweathermap.org/img/wn/{{forecast[0].icon}}@2x.png" alt="weather icon" /></span>
-					</span>
-					<p>Feels like {{ forecast[0].feels_like }}°C</p>
+					</span>` <p>Feels like {{ forecast[0].feels_like }}°C</p>
 				</div>
 				<div>
 					<div class="font-light">
 						<div class="justify-center grid gap-2 m-5">
-							<p>{{ forecast[0].description }}</p>
+							<p id="forescast_description">{{ forecast[0].description }}</p>
 							<p>humidity: <span class="font-semibold">{{ forecast[0].humidity }}%</span></p>
 							<p>wind: <span class="font-semibold">{{ forecast[0].wind }}mph</span></p>
 							<p>local time: <span class="font-semibold">{{ forecast[0].time }}</span></p>
@@ -107,5 +110,6 @@
 		{% endif %}
 	</div>
 </body>
+<script src="/static/js/video.js"></script>
 
 </html>
