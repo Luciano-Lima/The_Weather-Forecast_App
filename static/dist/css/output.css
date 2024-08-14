@@ -754,11 +754,15 @@ video {
 }
 
 .bg-slate-300\/15 {
-	background-color: rgb(203 213 225 / 7%);
+	background-color: rgb(203 213 225 / 24%);
+}
+
+#bg_color {
+	/* background-color: red; */
 }
 
 .bg-slate-500\/20 {
-	background-color: rgb(1 45 81 / 82%);
+	background-color: rgb(96 135 172 / 90%);
 }
 
 .bg-white {
@@ -815,7 +819,7 @@ video {
 
 .text-center {
 	text-align: center;
-	color: #93979a;
+	/* color: #93979a; */
 }
 
 .font-mono {
@@ -864,12 +868,12 @@ video {
 .text-slate-50 {
 	--tw-text-opacity: 1;
 	/* color: rgb(248 250 252 / var(--tw-text-opacity)); */
-	color: rgb(217 220 223);
+	color: #ffffff;
 }
 
 .text-stone-500 {
 	--tw-text-opacity: 1;
-	color: rgb(150 142 137 / var(--tw-text-opacity));
+	/* color: rgb(150 142 137 / var(--tw-text-opacity)); */
 }
 
 .text-white {
