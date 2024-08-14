@@ -11,8 +11,8 @@
 
 <body class="capitalize">
 	<div id="video_Background" style="position: absolute; bottom: 0; right: 0; min-height: 100vh; z-index: -1;">
-		<video autoplay muted>
-			<source src="../static/video/sunset.mp4">
+		<video autoplay loop muted>
+			<source src="../static/video/video_background.mp4">
 		</video>
 	</div>
 	<div class="container mx-auto">
@@ -45,13 +45,10 @@
 			</div>
 		</div>
 
-
-
-
 		{% if city %}
 		{% for day, forecast in forecasts_by_day.items() %}
 		{% if loop.index == 1 %}
-		<div class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20 shadow-lg shadow-blue-500/50">
+		<div id="bg_color" class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20 shadow-lg shadow-blue-500/50">
 			<div class="grid grid-cols-2 justify-items-center">
 				<div class="m-5">
 					<p id="city" class="font-semibold text-2xl">{{ city }}</p>
@@ -59,7 +56,8 @@
 					<span class="inline-flex items-center">
 						<span class="text-1xl font-black font-mono">{{ forecast[0].temperature }}°C</span>
 						<span><img src="https://openweathermap.org/img/wn/{{forecast[0].icon}}@2x.png" alt="weather icon" /></span>
-					</span>` <p>Feels like {{ forecast[0].feels_like }}°C</p>
+					</span>
+					<p>Feels like {{ forecast[0].feels_like }}°C</p>
 				</div>
 				<div>
 					<div class="font-light">
