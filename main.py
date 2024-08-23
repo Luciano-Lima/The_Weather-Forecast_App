@@ -83,4 +83,4 @@ class WeatherApp:
 
 if __name__ == '__main__':
     weather_app = WeatherApp()
-    weather_app.run()
+    weather_app.run(debug=True)
