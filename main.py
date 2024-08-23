@@ -81,6 +81,7 @@ class WeatherApp:
         self.app.config['SEND_FILE_MAX_AGE_DEFAULT'] = -1
         self.app.run()
 
+weather_app = WeatherApp()
+
 if __name__ == '__main__':
-    weather_app = WeatherApp()
-    weather_app.run(debug=True)
+    weather_app.run()
