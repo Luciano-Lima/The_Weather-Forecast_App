@@ -28,7 +28,6 @@ class WeatherApp {
 			case 'overcast clouds':
 				videoSource = '../static/video/overcast_clouds.mp4'
 				this.bg_color.style.backgroundColor = '#89898961'
-				// this.text_slate_50.style.color = '#ffffff'
 				break
 			case 'few clouds':
 				videoSource = '../static/video/few_clouds.mp4'
@@ -36,7 +35,6 @@ class WeatherApp {
 			case 'broken clouds':
 				videoSource = '../static/video/broken_clouds.mp4'
 				this.bg_color.style.backgroundColor = '#60606094'
-				console.log(this.bg_color)
 				break
 			case 'light rain':
 				videoSource = '../static/video/light_rain.mp4'
