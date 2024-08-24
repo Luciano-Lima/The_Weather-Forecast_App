@@ -1,6 +1,6 @@
 # The_Weather-Forecast_App
 
-A weather forecast app created with the Open Weather API, Python Flask and Tailwind
+A weather forecast app created with the Open Weather API, Python Flask and Tailwind, hosted on Heroku
 
 This is a simple Weather Forecast application built with Python, Flask, and the OpenWeatherMap API. The app allows users to search for weather forecasts by any city name and view detailed weather information, including temperature, humidity, wind speed, and more.
 
@@ -10,7 +10,7 @@ This is a simple Weather Forecast application built with Python, Flask, and the 
 - **Detailed Forecast**: View detailed weather information, including temperature, wind speed, humidity, and weather description.
 - **Daily Grouping**: Forecasts are grouped by day, making it easy to see weather trends.
 - **Interactive UI**: The app uses JavaScript to enhance user interactions and dynamically update the interface.
-- **Responsive Design**: The app is designed to be responsive and user-friendly on both desktop and mobile devices(at the moment is not responsive but will be improved as currently only works on desktop version)
+- **Responsive Design**: The app is designed to be responsive and user-friendly on both desktop and mobile devices
 
 ## Technologies Used
 
