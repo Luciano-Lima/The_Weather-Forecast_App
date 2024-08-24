@@ -6,36 +6,41 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Weather Forecast</title>
-	<link rel="stylesheet" href="{{url_for('static', filename='dist/css/output.css')}}" />
+	<!-- Link to the CSS file with Flask's url_for method -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='dist/css/output.css') }}" />
 </head>
 
 <body class="capitalize">
-	<div id="video_Background" style="position: absolute; bottom: 0; right: 0; min-height: 100vh; z-index: -1;">
-		<video autoplay loop muted>
-			<source src="../static/video/video_background.mp4">
+	<!-- Background video -->
+	<div id="video_Background" class="fixed inset-0 z-[-1]">
+		<video autoplay loop muted class="w-full h-full object-cover">
+			<source src="{{ url_for('static', filename='video/video_background.mp4') }}" type="video/mp4">
 		</video>
 	</div>
-	<div class="container mx-auto">
-		<div class="mx-auto text-center m-5">
-			<h1 class="text-2xl text-white ">Weather Forecast</h1>
-			<div class="inline-block m-5 opacity-70 w-96">
-				<form action="/" method="POST">
+	<div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+		<div class="mx-auto text-center m-5 max-w-xl">
+			<h1 class="text-3xl sm:text-4xl md:text-5xl text-white">Weather Forecast</h1>
+			<div class="inline-block m-5 opacity-70 w-full sm:w-96">
+				<!-- Form for searching the weather -->
+				<form action="/" method="POST" class="relative z-20">
 					<label class="relative block">
 						<span class="sr-only">Search</span>
 						<span class="absolute inset-y-0 left-0 flex items-center pl-2">
-							<img src="../static/img/search.png" class="w-4 opacity-25" alt="search icon" />
+							<img src="{{ url_for('static', filename='img/search.png') }}" class="w-4 opacity-25" alt="search icon" />
 						</span>
 						<input
-							class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-1 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+							class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
 							placeholder="" type="text" name="city" id="city" required />
 					</label>
 				</form>
+				<!-- Flash messages -->
 				<div class="w-full pt-6 text-base leading-5 text-white rounded-lg font-regular">
 					<div class="mr-auto">
-						<span class="bg-slate-900">{% with messages = get_flashed_messages() %}
+						<span class="">
+							{% with messages = get_flashed_messages() %}
 							{% if messages %}
 							{% for msg in messages %}
-							{{ msg }}
+							<p>{{ msg }}</p>
 							{% endfor %}
 							{% endif %}
 							{% endwith %}
@@ -45,36 +50,34 @@
 			</div>
 		</div>
 
-		{% if city %}
-		{% for day, forecast in forecasts_by_day.items() %}
-		{% if loop.index == 1 %}
+		<!-- Display weather data if available -->
+		{% if city and current_weather %}
 		<div id="bg_color" class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20 shadow-lg shadow-blue-500/50">
 			<div class="grid grid-cols-2 justify-items-center">
 				<div class="m-5">
 					<p id="city" class="font-semibold text-2xl">{{ city }}</p>
-					<p class="font-thin">{{ forecast.dt_time }}</p>
 					<span class="inline-flex items-center">
-						<span class="text-1xl font-black font-mono">{{ forecast[0].temperature }}°C</span>
-						<span><img src="https://openweathermap.org/img/wn/{{forecast[0].icon}}@2x.png" alt="weather icon" /></span>
+						<span class="text-1xl font-black font-mono">{{ current_weather.temperature }}°C</span>
+						<span><img src="https://openweathermap.org/img/wn/{{ current_weather.icon }}@2x.png" alt="weather icon" /></span>
 					</span>
-					<p>Feels like {{ forecast[0].feels_like }}°C</p>
+					<p>Feels like {{ current_weather.feels_like }}°C</p>
 				</div>
 				<div>
 					<div class="font-light">
 						<div class="justify-center grid gap-2 m-5">
-							<p id="forescast_description">{{ forecast[0].description }}</p>
-							<p>humidity: <span class="font-semibold">{{ forecast[0].humidity }}%</span></p>
-							<p>wind: <span class="font-semibold">{{ forecast[0].wind }}mph</span></p>
-							<p>local time: <span class="font-semibold">{{ forecast[0].time }}</span></p>
+							<p id="forecast_description">{{ current_weather.description }}</p>
+							<p>Humidity: <span class="font-semibold">{{ current_weather.humidity }}%</span></p>
+							<p>Wind: <span class="font-semibold">{{ current_weather.wind }} mph</span></p>
 						</div>
 					</div>
 				</div>
 			</div>
 
+			<!-- Current day forecast -->
 			<div class="forecast-container">
 				{% for day, forecasts in forecasts_by_day.items() %}
 				{% if loop.index == 1 %}
-				<div class="flex columns-4 text-center justify-evenly p-5 text-stone-500 bg-slate-300/15 rounded-md border-b-2">
+				<div class="flex columns-4 text-center justify-evenly p-5 bg-slate-300/15 rounded-md border-b-2">
 					{% for forecast in forecasts %}
 					<div>
 						<p>{{ forecast.time }}</p>
@@ -83,31 +86,30 @@
 					</div>
 					{% endfor %}
 				</div>
-
 				{% endif %}
 				{% endfor %}
 			</div>
 
+			<!-- 6-day forecast excluding the current day -->
 			<div class="forecast-container">
-				<div class="flex columns-auto text-center justify-evenly p-5 rounded-md border-b-2">
+				<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-center p-5 rounded-md border-b-2">
 					{% set displayed_days = [] %}
 					{% for day, forecasts in forecasts_by_day.items() %}
-					{% if day not in displayed_days and displayed_days|length < 5 %} <span class="border rounded-lg p-4">
+					{% if day != current_day and displayed_days|length < 6 %} <div class="border rounded-lg p-4">
 						<p>{{ day }}</p>
 						<p><img src="https://openweathermap.org/img/wn/{{ forecasts[0].icon }}@2x.png" alt="weather icon" /></p>
 						<p>{{ forecasts[0].temperature }}°C</p>
-						</span>
-						{% set displayed_days = displayed_days + [day] %}
-						{% endif %}
-						{% endfor %}
 				</div>
+				{% set displayed_days = displayed_days + [day] %}
+				{% endif %}
+				{% endfor %}
 			</div>
 		</div>
-		{% endif %}
-		{% endfor %}
-		{% endif %}
 	</div>
+	{% endif %}
+	</div>
+	<!-- Link to JavaScript file -->
+	<script src="{{ url_for('static', filename='js/video.js') }}"></script>
 </body>
-<script src="/static/js/video.js"></script>
 
 </html>
