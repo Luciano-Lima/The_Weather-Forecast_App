@@ -2,15 +2,17 @@ class WeatherApp {
 	constructor() {
 		this.videoEl = document.querySelector('#video_Background video')
 		this.sourceEl = this.videoEl.querySelector('source')
-		this.forescast_descriptionEl = document.getElementById('forescast_description')
+		this.forecast_descriptionEl = document.getElementById('forecast_description')
 		this.bg_color = document.getElementById('bg_color')
 	}
 
 	updateVideoBackground() {
-		let weatherDescription = this.forescast_descriptionEl.innerText.trim().toLowerCase()
+		let weatherDescription = this.forecast_descriptionEl
+			? this.forecast_descriptionEl.innerText.trim().toLowerCase()
+			: ''
 		let videoSource
 
-		// Check if weatherDescription is not empty or undefined
+		// Ensure weather description is valid
 		if (weatherDescription === '') {
 			console.log('Weather description is not available.')
 			return
@@ -43,23 +45,39 @@ class WeatherApp {
 			default:
 				videoSource = '../static/video/video_background.mp4'
 		}
-		// Force update the source element's src attribute
-		const uniqueVideoSource = `${videoSource}?t=${new Date().getTime()}`
-		this.sourceEl.src = uniqueVideoSource
 
-		// Reload and play the video
-		this.videoEl.load()
-		this.videoEl.play()
+		// Add cache-busting query string to prevent caching issues
+		const uniqueVideoSource = `${videoSource}?t=${new Date().getTime()}`
+
+		// Compare only the relative part of the source URL to avoid issues with base URL differences
+		const currentSrc = this.sourceEl.src.split('?')[0] // remove cache-busting part if present
+
+		//load and play video if the source has changed
+		if (!currentSrc.includes(videoSource)) {
+			this.sourceEl.src = uniqueVideoSource
+			this.videoEl.load()
+
+			this.videoEl.play().catch((err) => {
+				// Handle video play errors, especially on mobile devices
+				console.error('Video playback failed', err)
+			})
+		}
 	}
 
 	init() {
+		// Initial call when the page loads
+		this.updateVideoBackground()
+
+		// Monitor for changes in the forecast description dynamically
+		const observer = new MutationObserver(() => this.updateVideoBackground())
+		if (this.forecast_descriptionEl) {
+			observer.observe(this.forecast_descriptionEl, { childList: true, subtree: true })
+		}
+		// Listen for input changes on the city field to potentially trigger background updates
 		const cityInput = document.getElementById('city')
 		cityInput.addEventListener('input', () => {
 			setTimeout(() => this.updateVideoBackground(), 500)
 		})
-
-		// Initial call when the page loads
-		this.updateVideoBackground()
 	}
 }
 
