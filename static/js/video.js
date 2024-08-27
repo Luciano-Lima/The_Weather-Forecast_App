@@ -4,6 +4,7 @@ class WeatherApp {
 		this.sourceEl = this.videoEl.querySelector('source')
 		this.forecast_descriptionEl = document.getElementById('forecast_description')
 		this.bg_color = document.getElementById('bg_color')
+		this.currentVideoSource = '' // Track the current video source to prevent unnecessary loads
 	}
 
 	updateVideoBackground() {
@@ -14,7 +15,6 @@ class WeatherApp {
 
 		// Ensure weather description is valid
 		if (weatherDescription === '') {
-			console.log('Weather description is not available.')
 			return
 		}
 
@@ -53,14 +53,16 @@ class WeatherApp {
 		const currentSrc = this.sourceEl.src.split('?')[0] // remove cache-busting part if present
 
 		//load and play video if the source has changed
-		if (!currentSrc.includes(videoSource)) {
-			this.sourceEl.src = uniqueVideoSource
+		if (this.currentVideoSource !== uniqueVideoSource) {
+			this.sourceEl.src = uniqueVideoSource // Update video source
 			this.videoEl.load()
 
 			this.videoEl.play().catch((err) => {
 				// Handle video play errors, especially on mobile devices
 				console.error('Video playback failed', err)
 			})
+			// Update the current video source to the new one
+			this.currentVideoSource = uniqueVideoSource
 		}
 	}
 
@@ -68,16 +70,21 @@ class WeatherApp {
 		// Initial call when the page loads
 		this.updateVideoBackground()
 
+		const form = document.querySelector('form')
+		if (form) {
+			form.addEventListener('submit', (e) => {
+				setTimeout(() => {
+					this.updateVideoBackground()
+				}, 500) // Delay to allow weather data to update
+				this.updateVideoBackground()
+			})
+		}
+
 		// Monitor for changes in the forecast description dynamically
 		const observer = new MutationObserver(() => this.updateVideoBackground())
 		if (this.forecast_descriptionEl) {
 			observer.observe(this.forecast_descriptionEl, { childList: true, subtree: true })
 		}
-		// Listen for input changes on the city field to potentially trigger background updates
-		const cityInput = document.getElementById('city')
-		cityInput.addEventListener('input', () => {
-			setTimeout(() => this.updateVideoBackground(), 500)
-		})
 	}
 }
 
