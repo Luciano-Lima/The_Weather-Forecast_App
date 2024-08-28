@@ -11,6 +11,7 @@
 </head>
 
 <body class="capitalize">
+
 	<!-- Background video -->
 	<div id="video_Background" class="fixed inset-0 z-[-1]">
 		<video autoplay loop muted playsinline class="w-full h-full object-cover">
@@ -20,7 +21,7 @@
 	<div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 		<div class="mx-auto text-center m-5 max-w-xl">
 			<h1 class="text-3xl sm:text-4xl md:text-5xl text-white">Weather Forecast</h1>
-			<div class="inline-block m-5 opacity-70 w-full sm:w-96">
+			<div class="inline-block m-5 opacity-70 w-full sm:w-96 mx-auto">
 				<!-- Form for searching the weather -->
 				<form action="/" method="POST" class="relative z-20">
 					<label class="relative block">
@@ -29,12 +30,12 @@
 							<img src="{{ url_for('static', filename='img/search.png') }}" class="w-4 opacity-25" alt="search icon" />
 						</span>
 						<input
-							class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+							class="placeholder:italic placeholder:text-slate-400 block bg-white w-full rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
 							placeholder="" type="text" name="city" id="city" required />
 					</label>
 				</form>
 				<!-- Flash messages -->
-				<div class="w-full pt-6 text-base leading-5 text-white rounded-lg font-regular">
+				<div class="w-full text-base leading-5 text-white rounded-lg font-regular {% if get_flashed_messages() %} pt-6 {% endif %}">
 					<div class="mr-auto">
 						<span class="">
 							{% with messages = get_flashed_messages() %}
@@ -52,7 +53,7 @@
 
 		<!-- Display weather data if available -->
 		{% if city and current_weather %}
-		<div id="bg_color" class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20 shadow-lg shadow-blue-500/50">
+		<div id="bg_color" class="max-w-screen-lg mx-auto min-h-full text-slate-50 rounded-md bg-slate-500/20 shadow-lg">
 			<div class="grid grid-cols-2 justify-items-center">
 				<div class="m-5">
 					<p id="city" class="font-semibold text-2xl">{{ city }}</p>
@@ -107,7 +108,7 @@
 		</div>
 	</div>
 	{% endif %}
-	</div>
+
 	<!-- Link to JavaScript file -->
 	<script src="{{ url_for('static', filename='js/video.js') }}"></script>
 </body>
